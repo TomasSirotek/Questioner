@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="en.assignment.gui.QuestController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label prefHeight="55.0" prefWidth="315.0" text="Name of the user :">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+         <children>
+            <Label fx:id="full_name" prefHeight="50.0" prefWidth="355.0">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <children>
+            <Label prefHeight="57.0" prefWidth="338.0" text="I like to work with Java">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+            <Label prefHeight="75.0" prefWidth="312.0" text="I think Java is fun">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+         <children>
+            <Label prefHeight="56.0" prefWidth="338.0" text="Java is my preffered language">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+         <children>
+            <Label prefHeight="76.0" prefWidth="323.0" text="My assignment are fun">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+         <children>
+            <Label prefHeight="108.0" prefWidth="334.0" text="My assignment are to easy">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="6">
+         <children>
+            <Label prefHeight="63.0" prefWidth="321.0" text="I always do my assignments">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7">
+         <children>
+            <Label prefHeight="68.0" prefWidth="318.0" text="I always attend my class">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <children>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <children>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <children>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <children>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <children>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+               </children>
+            </VBox>
+            <VBox prefHeight="50.0" prefWidth="102.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="8">
+         <children>
+            <VBox prefHeight="46.0" prefWidth="168.0">
+               <children>
+                  <Button fx:id="calculate" mnemonicParsing="false" prefHeight="26.0" prefWidth="124.0" text="Calculate score">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+         <children>
+            <VBox prefHeight="44.0" prefWidth="142.0">
+               <children>
+                  <Label prefHeight="44.0" prefWidth="174.0" text="Score :">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="44.0" prefWidth="158.0">
+               <children>
+                  <Label fx:id="score" prefHeight="44.0" prefWidth="158.0" text="0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="55.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</GridPane>
