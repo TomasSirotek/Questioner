@@ -7,14 +7,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-
 import java.io.IOException;
 import java.util.Objects;
 
 public class Utils {
 
-    public static void changeScene(ActionEvent event, String fxmlFile, String name){
+    public  void changeScene(ActionEvent event, String fxmlFile, String name){
         Parent root = null;
 
         if(name != null){
@@ -38,5 +36,9 @@ public class Utils {
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.show();
+    }
+
+    public static void calculateScore(){
+
     }
 }

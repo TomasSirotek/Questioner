@@ -13,17 +13,11 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     @FXML
-    public TextField full_name;
+    private TextField full_name;
     @FXML
-    public Button proceed;
+    private Button proceed;
     @FXML
     private Label lbl;
-
-    @FXML
-    private void clickBtn(ActionEvent actionEvent) {
-
-        lbl.setText("Button");
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
