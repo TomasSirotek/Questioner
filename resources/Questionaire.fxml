@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="en.assignment.gui.QuestController">
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="en.assignment.gui.QuestController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -137,17 +138,20 @@
          <children>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+                  <RadioButton fx:id="disagree" mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="first_question" />
+                     </toggleGroup></RadioButton>
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+                  <RadioButton fx:id="neutral" mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" toggleGroup="$first_question" />
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+                  <RadioButton fx:id="agree" mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" toggleGroup="$first_question" />
                </children>
             </VBox>
          </children>
@@ -156,17 +160,20 @@
          <children>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="second_question" />
+                     </toggleGroup></RadioButton>
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" toggleGroup="$second_question" />
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" toggleGroup="$second_question" />
                </children>
             </VBox>
          </children>
@@ -175,17 +182,20 @@
          <children>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="third_question" />
+                     </toggleGroup></RadioButton>
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" toggleGroup="$third_question" />
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" toggleGroup="$third_question" />
                </children>
             </VBox>
          </children>
@@ -194,17 +204,20 @@
          <children>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="forth_question" />
+                     </toggleGroup></RadioButton>
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" toggleGroup="$forth_question" />
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" toggleGroup="$forth_question" />
                </children>
             </VBox>
          </children>
@@ -213,17 +226,20 @@
          <children>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="fifth_question" />
+                     </toggleGroup></RadioButton>
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" toggleGroup="$fifth_question" />
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" toggleGroup="$fifth_question" />
                </children>
             </VBox>
          </children>
@@ -232,17 +248,20 @@
          <children>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sixth_question" />
+                     </toggleGroup></RadioButton>
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" toggleGroup="$sixth_question" />
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" toggleGroup="$sixth_question" />
                </children>
             </VBox>
          </children>
@@ -251,48 +270,59 @@
          <children>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="101.0" text="Disagree">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="seventh_question" />
+                     </toggleGroup></RadioButton>
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" />
+                  <RadioButton mnemonicParsing="false" prefHeight="61.0" prefWidth="114.0" text="Neutral" toggleGroup="$seventh_question" />
                </children>
             </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" />
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="114.0" text="Agree" toggleGroup="$seventh_question" />
                </children>
             </VBox>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="8">
          <children>
-            <VBox prefHeight="46.0" prefWidth="168.0">
+            <VBox prefHeight="49.0" prefWidth="154.0">
                <children>
-                  <Button fx:id="calculate" mnemonicParsing="false" prefHeight="26.0" prefWidth="124.0" text="Calculate score">
+                  <Button fx:id="calculate" mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Calculate score">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="12.0" left="12.0" top="12.0" />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
+            <Button fx:id="save" disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Save...">
+               <HBox.margin>
+                  <Insets bottom="12.0" right="12.0" top="12.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <children>
             <VBox prefHeight="44.0" prefWidth="142.0">
                <children>
-                  <Label prefHeight="44.0" prefWidth="174.0" text="Score :">
+                  <Label prefHeight="25.0" prefWidth="140.0" text="Score :">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="26.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </Label>
                </children>
             </VBox>
             <VBox prefHeight="44.0" prefWidth="158.0">
                <children>
-                  <Label fx:id="score" prefHeight="44.0" prefWidth="158.0" text="0">
+                  <Label fx:id="score_final" prefHeight="44.0" prefWidth="158.0" text="0">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -305,4 +335,7 @@
          </children>
       </HBox>
    </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
 </GridPane>

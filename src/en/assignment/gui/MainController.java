@@ -16,8 +16,6 @@ public class MainController implements Initializable {
     private TextField full_name;
     @FXML
     private Button proceed;
-    @FXML
-    private Label lbl;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

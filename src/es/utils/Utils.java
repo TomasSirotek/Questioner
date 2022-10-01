@@ -1,18 +1,23 @@
 package es.utils;
 
 import en.assignment.gui.QuestController;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class Utils {
 
-    public  void changeScene(ActionEvent event, String fxmlFile, String name){
+    public  static void changeScene(ActionEvent event, String fxmlFile, String name){
         Parent root = null;
 
         if(name != null){
@@ -32,13 +37,19 @@ public class Utils {
             }
         }
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setTitle("Welcome " + name);
+        stage.setTitle("Welcome to questioner " + name);
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.show();
     }
 
-    public static void calculateScore(){
+    public static void calculateScore(ActionEvent event,ObservableList<ToggleGroup> answers){
+        // Loop throught the groups
+        // get the text
+        // difference from it and find cases
+        // count score
+
+
 
     }
 }
