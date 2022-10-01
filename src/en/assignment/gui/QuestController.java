@@ -1,6 +1,7 @@
 package en.assignment.gui;
 
 import dk.javahandson.Question;
+import es.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -44,6 +45,8 @@ public class QuestController implements Initializable {
 
         //  calculate.setOnAction(event
         calculate.setOnAction(this::setTextButton);
+        save.setOnAction(event -> Utils.saveData(event,resultList));
+
     }
     enum State {
         AGREE,
@@ -90,15 +93,15 @@ public class QuestController implements Initializable {
             switch (resultFromQuestions.get(i)) {
                 case "Disagree" -> {
                     score -= 1;
-                    resultList.add(new Question(i + 1, "Disagree", "Teacher Questionaire"));
+                    resultList.add(new Question(i + 1, "Disagree", full_name.getText()));
                 }
                 case "Neutral" -> {
                     score += 0;
-                    resultList.add(new Question(i + 1, "Neutral", "Teacher Questionaire"));
+                    resultList.add(new Question(i + 1, "Neutral", full_name.getText()));
                 }
                 case "Agree" -> {
                     score += 1;
-                    resultList.add(new Question(i + 1, "Agree", "Teacher Questionaire"));
+                    resultList.add(new Question(i + 1, "Agree", full_name.getText()));
                 }
                 default -> {
                 }
@@ -107,11 +110,5 @@ public class QuestController implements Initializable {
         }
         score_final.setText(String.valueOf(score));
     }
-
-
-
-
-
-
 
 }

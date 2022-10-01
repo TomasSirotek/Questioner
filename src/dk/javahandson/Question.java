@@ -1,18 +1,17 @@
 package dk.javahandson;
 
 
-
 public class Question {
    // private String question;
     private int numQuestion;
     private String answer;
-    private String questionaireName;
+    private String userName;
 
-    public Question(int numQuestion,String answer,String questionaireName){
+    public Question(int numQuestion,String answer,String userName){
         // this.question=question;
         this.numQuestion= numQuestion;
         this.answer=answer;
-        this.questionaireName= questionaireName;
+        this.userName= userName;
     }
 
 //    public String getQuestion() {
@@ -35,7 +34,7 @@ public class Question {
 
     public void setAnswer(String answer) { this.answer = answer; }
 
-    public String getQuestionaireName() { return questionaireName; }
+    public String getUserName() { return userName; }
 
-    public void setQuestionaireName(String questionaireName) { this.questionaireName = questionaireName; }
+    public void setUserName(String userName) { this.userName = userName; }
 }
