@@ -27,7 +27,11 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="44.0" prefWidth="296.0" />
+                  <HBox prefHeight="44.0" prefWidth="296.0">
+                     <children>
+                        <Label fx:id="test" prefHeight="48.0" prefWidth="144.0" />
+                     </children>
+                  </HBox>
                   <HBox alignment="BOTTOM_LEFT" prefHeight="44.0" prefWidth="296.0">
                      <children>
                         <Label text="Full name" />

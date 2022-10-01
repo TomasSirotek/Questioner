@@ -1,5 +1,6 @@
 package en.assignment.gui;
 
+import dk.javahandson.User;
 import es.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,11 +21,25 @@ public class MainController implements Initializable {
     @FXML
     private Button proceed;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         proceed.setOnAction(event ->
                 Utils.changeScene(event,
-                        "/Questionaire.fxml",full_name.getText()));
+                        "/Questionaire.fxml",full_name.getText(),0));
     }
 
+   // public void setScore(Integer score){
+//        test.setText(String.valueOf(score));
+//    }
+
+    public void getUser(User u) {
+
+        if(!u.isListed()){
+            // add for another row
+
+        }else {
+            // count score up
+        }
+    }
 }

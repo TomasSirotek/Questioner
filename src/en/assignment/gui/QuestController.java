@@ -1,15 +1,25 @@
 package en.assignment.gui;
 
+import dk.javahandson.Main;
 import dk.javahandson.Question;
+import dk.javahandson.User;
 import es.utils.Utils;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class QuestController implements Initializable {
@@ -33,6 +43,8 @@ public class QuestController implements Initializable {
     @FXML
     private GridPane gridPane;
 
+    private MainController controller;
+
     private int score = 0;
 
     private final List<String> resultFromQuestions = new ArrayList<>();
@@ -45,9 +57,44 @@ public class QuestController implements Initializable {
 
         //  calculate.setOnAction(event
         calculate.setOnAction(this::setTextButton);
-        save.setOnAction(event -> Utils.saveData(event,resultList,score));
+        save.setOnAction(event -> saveData(event,score,full_name.getText()));
 
     }
+
+    private void saveData(ActionEvent event,int score,String name) {
+
+        User r = new User("1",name,score,3.3,true);
+
+        Parent root = null;
+        if(name != null){
+            try {
+                FXMLLoader loader = new FXMLLoader(Utils.class.getResource("/MainWindow.fxml"));
+                root = loader.load();
+                MainController pc = loader.getController();
+                pc.getUser(r);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            try{
+                root = FXMLLoader.load(Objects.requireNonNull(Utils.class.getResource("/MainWindow.fxml")));
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setTitle("Welcome back " + name);
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
+
+       //  w.returnUser(u,name);
+
+//        Node node = (Node) event.getSource();
+//        Stage stage = (Stage)node.getScene().getWindow();
+//        stage.close();
+    }
+
     enum State {
         AGREE,
         NEUTRAL,

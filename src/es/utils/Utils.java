@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class Utils {
 
-    public static void changeScene(ActionEvent event, String fxmlFile, String name){
+    public static void changeScene(ActionEvent event, String fxmlFile, String name,int score){
         Parent root = null;
 
         if(name != null){
@@ -40,17 +40,6 @@ public class Utils {
         stage.setResizable(false);
         stage.show();
     }
-
-    public static void saveData(ActionEvent event,List<Question> answers,int score){
-
-       // changeScene(event,"/MainWindow.fxml","Tomas");
-
-
-//        Node node = (Node) event.getSource();
-//        Stage stage = (Stage)node.getScene().getWindow();
-//        stage.initModality(Modality.WINDOW_MODAL);
-      //  stage.close();
-        }
 
 
 
