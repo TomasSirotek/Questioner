@@ -6,12 +6,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+    @FXML
+    private TableView<?> resultTable;
     @FXML
     private TextField full_name;
     @FXML

@@ -3,13 +3,13 @@ package dk.javahandson;
 
 public class Question {
    // private String question;
-    private int numQuestion;
+    private int id;
     private String answer;
     private String userName;
 
-    public Question(int numQuestion,String answer,String userName){
+    public Question(int id,String answer,String userName){
         // this.question=question;
-        this.numQuestion= numQuestion;
+        this.id= id;
         this.answer=answer;
         this.userName= userName;
     }
@@ -22,12 +22,12 @@ public class Question {
 //        this.question = question;
 //    }
 
-    public int getNumQuestion() {
-        return numQuestion;
+    public int getId() {
+        return id;
     }
 
-    public void setNumQuestion(int numQuestion) {
-        this.numQuestion = numQuestion;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAnswer() { return answer; }

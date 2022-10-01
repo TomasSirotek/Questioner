@@ -45,7 +45,7 @@ public class QuestController implements Initializable {
 
         //  calculate.setOnAction(event
         calculate.setOnAction(this::setTextButton);
-        save.setOnAction(event -> Utils.saveData(event,resultList));
+        save.setOnAction(event -> Utils.saveData(event,resultList,score));
 
     }
     enum State {

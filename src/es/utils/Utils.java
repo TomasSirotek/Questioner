@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
@@ -40,16 +41,17 @@ public class Utils {
         stage.show();
     }
 
-    public static void saveData(ActionEvent event,List<Question> answers){
+    public static void saveData(ActionEvent event,List<Question> answers,int score){
+
+       // changeScene(event,"/MainWindow.fxml","Tomas");
 
 
-
+//        Node node = (Node) event.getSource();
+//        Stage stage = (Stage)node.getScene().getWindow();
+//        stage.initModality(Modality.WINDOW_MODAL);
+      //  stage.close();
         }
-      //  changeScene(event,"/Window.fxml","Tomas");
 
 
 
-
-
-    }
 }
