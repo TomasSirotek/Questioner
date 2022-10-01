@@ -3,20 +3,20 @@ package dk.javahandson;
 import java.util.List;
 
 public class User {
-    private String id;
+    private Integer id;
 
-    private String userName;
-    private int reachedScore;
-    private double timeTaken;
+    private String name;
+    private Integer total;
+    private Double time;
 
     private List<Question> resultList;
     private boolean isListed;
 
-    public User(String id, String userName,int reachedScore, double timeTaken, boolean isListed) {
+    public User(Integer id, String name,int total, double time, boolean isListed) {
         this.id = id;
-        this.userName = userName;
-        this.reachedScore = reachedScore;
-        this.timeTaken = timeTaken;
+        this.name = name;
+        this.total = total;
+        this.time = time;
         this.isListed = isListed;
     }
 
@@ -24,10 +24,16 @@ public class User {
         return isListed;
     }
 
-    public String getId(){
+    public Integer getId(){
        return id;
     }
-    public int getReachedScore(){
-        return reachedScore;
+    public int getTotal(){
+        return total;
+    }
+    public String getName(){
+        return name;
+    }
+    public Double getTime(){
+        return time;
     }
 }

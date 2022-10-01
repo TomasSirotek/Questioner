@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="en.assignment.gui.MainController">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="en.assignment.gui.MainController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -70,9 +70,10 @@
                <children>
                   <TableView fx:id="resultTable" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn fx:id="full_name_table" prefWidth="98.0" text="Full name" />
-                      <TableColumn fx:id="score_table" minWidth="0.0" prefWidth="88.0" text="Score" />
-                        <TableColumn fx:id="time_taken_table" prefWidth="109.0" text="Time taken" />
+                      <TableColumn fx:id="id" prefWidth="60.0" text="id" />
+                      <TableColumn fx:id="name" minWidth="0.0" prefWidth="75.0" text="name" />
+                        <TableColumn fx:id="total" prefWidth="83.0" text="total" />
+                        <TableColumn fx:id="time" prefWidth="67.0" text="time" />
                     </columns>
                   </TableView>
                </children>

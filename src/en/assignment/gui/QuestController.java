@@ -4,6 +4,8 @@ import dk.javahandson.Main;
 import dk.javahandson.Question;
 import dk.javahandson.User;
 import es.utils.Utils;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,6 +52,9 @@ public class QuestController implements Initializable {
     private final List<String> resultFromQuestions = new ArrayList<>();
     private final List<Question> resultList= new ArrayList<>();
 
+    private final List<User> userList= new ArrayList<>();
+
+    private User user;
     // agree = +1, neutral = 0, disagree= -1.
 
     @Override
@@ -57,36 +62,56 @@ public class QuestController implements Initializable {
 
         //  calculate.setOnAction(event
         calculate.setOnAction(this::setTextButton);
-        save.setOnAction(event -> saveData(event,score,full_name.getText()));
-
+        //save.setOnAction(event -> saveData(event,score,full_name.getText()));
+        save.setOnAction(event -> Utils.changeScene(event,"/MainWindow.fxml",user));
     }
 
     private void saveData(ActionEvent event,int score,String name) {
 
-        User r = new User("1",name,score,3.3,true);
 
-        Parent root = null;
-        if(name != null){
-            try {
-                FXMLLoader loader = new FXMLLoader(Utils.class.getResource("/MainWindow.fxml"));
-                root = loader.load();
-                MainController pc = loader.getController();
-                pc.getUser(r);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            try{
-                root = FXMLLoader.load(Objects.requireNonNull(Utils.class.getResource("/MainWindow.fxml")));
-            } catch (IOException e){
-                e.printStackTrace();
-            }
-        }
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setTitle("Welcome back " + name);
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
+        ObservableList<User> usersList = FXCollections.observableArrayList();
+        int id = 0;
+        boolean existInList = false;
+
+        User us = new User(id,name,score,3.3,true);
+//        userList.add(us);
+//
+//        for (int i = 0; i < usersList.size(); i++) {
+//            if(userList.size() != 0){
+//                    id++;
+//                    User r = new User(id,name,score,3.3,true);
+//                    userList.add(r);
+//            } else {
+//
+//            }
+//        }
+
+
+
+
+
+//        Parent root = null;
+//        if(name != null){
+//            try {
+//                FXMLLoader loader = new FXMLLoader(Utils.class.getResource("/MainWindow.fxml"));
+//                root = loader.load();
+//                MainController pc = loader.getController();
+//                pc.getUser(us);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        } else {
+//            try{
+//                root = FXMLLoader.load(Objects.requireNonNull(Utils.class.getResource("/MainWindow.fxml")));
+//            } catch (IOException e){
+//                e.printStackTrace();
+//            }
+//        }
+//        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        stage.setTitle("Welcome back " + name);
+//        stage.setScene(new Scene(root));
+//        stage.setResizable(false);
+//        stage.show();
 
        //  w.returnUser(u,name);
 
@@ -101,8 +126,8 @@ public class QuestController implements Initializable {
         DISAGREE;
     }
     @FXML
-    public void setUser(String name) {
-        full_name.setText(name);
+    public void setUser(User user) {
+        full_name.setText(user.getName());
     }
 
     @FXML

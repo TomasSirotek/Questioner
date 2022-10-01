@@ -14,14 +14,6 @@ public class Question {
         this.userName= userName;
     }
 
-//    public String getQuestion() {
-//        return question;
-//    }
-//
-//    public void setQuestion(String question) {
-//        this.question = question;
-//    }
-
     public int getId() {
         return id;
     }
