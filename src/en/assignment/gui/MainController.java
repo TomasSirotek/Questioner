@@ -54,7 +54,6 @@ public class MainController implements Initializable {
            if(u.getName() == us.getName()){
                // add for another row
                System.out.print("Exists");
-
            }else {
                // count score up
                resultTable.setItems(usersList);

@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -62,8 +63,8 @@ public class QuestController implements Initializable {
 
         //  calculate.setOnAction(event
         calculate.setOnAction(this::setTextButton);
-        //save.setOnAction(event -> saveData(event,score,full_name.getText()));
-        save.setOnAction(event -> Utils.changeScene(event,"/MainWindow.fxml",user));
+        save.setOnAction(event -> saveData(event,score,full_name.getText()));
+        //save.setOnAction(event -> Utils.changeScene(event,"/MainWindow.fxml",user));
     }
 
     private void saveData(ActionEvent event,int score,String name) {
@@ -90,34 +91,35 @@ public class QuestController implements Initializable {
 
 
 
-//        Parent root = null;
-//        if(name != null){
-//            try {
-//                FXMLLoader loader = new FXMLLoader(Utils.class.getResource("/MainWindow.fxml"));
-//                root = loader.load();
-//                MainController pc = loader.getController();
-//                pc.getUser(us);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        } else {
-//            try{
-//                root = FXMLLoader.load(Objects.requireNonNull(Utils.class.getResource("/MainWindow.fxml")));
-//            } catch (IOException e){
-//                e.printStackTrace();
-//            }
-//        }
+        Parent root = null;
+        if(name != null){
+            try {
+                FXMLLoader loader = new FXMLLoader(Utils.class.getResource("/MainWindow.fxml"));
+                root = loader.load();
+                MainController pc = loader.getController();
+                pc.getUser(us);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            try{
+                root = FXMLLoader.load(Objects.requireNonNull(Utils.class.getResource("/MainWindow.fxml")));
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
 //        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 //        stage.setTitle("Welcome back " + name);
 //        stage.setScene(new Scene(root));
 //        stage.setResizable(false);
 //        stage.show();
 
-       //  w.returnUser(u,name);
+        // w.returnUser(u,name);
 
-//        Node node = (Node) event.getSource();
-//        Stage stage = (Stage)node.getScene().getWindow();
-//        stage.close();
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage)node.getScene().getWindow();
+        stage.initModality(Modality.WINDOW_MODAL);
+       // stage.close();
     }
 
     enum State {
