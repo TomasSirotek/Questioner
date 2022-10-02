@@ -43,7 +43,7 @@ public class MainController implements Initializable {
         ObservableList<User> obsUsersList = FXCollections.observableArrayList();
         List<User> fetchedUsers = Utils.fetchData();
 
-        if(fetchedUsers != null){
+        if(fetchedUsers != null) {
             for (User u : fetchedUsers
             ) {
                 obsUsersList.add(u);
@@ -53,10 +53,6 @@ public class MainController implements Initializable {
                 time.setCellValueFactory(new PropertyValueFactory<>("time"));
             }
             resultTable.setItems(obsUsersList);
-        }else {
-           Alert alert = new Alert(Alert.AlertType.INFORMATION);
-           alert.setContentText("You are the first user ");
-           alert.show();
         }
     }
 }

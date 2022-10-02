@@ -37,29 +37,10 @@ public class Utils {
             }
         }
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setTitle("Welcome to questioner " + name);
+        stage.setTitle("Welcome to questioner");
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.show();
-    }
-
-
-    public static void saveData(ActionEvent event, User user) {
-        try(Connection con = DbConnection.getConnection()){
-            String sql = "INSERT INTO user (id,name,total) VALUES (?,?,?);";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-
-            preparedStatement.setInt(1, user.getId());
-            preparedStatement.setString(2,user.getName());
-            preparedStatement.setInt(3,user.getTotal());
-
-            preparedStatement.executeUpdate();
-
-            // Todo : check !
-            changeScene(event,"/MainWindow.fxml",null);
-        }  catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
     }
 
     public static List<User> fetchData(){
@@ -84,4 +65,53 @@ public class Utils {
         }
         return null;
     }
+
+    public static void saveData(ActionEvent event, User user) {
+        List<User> fetchedUser = fetchData();
+        boolean isListed = false;
+
+        assert fetchedUser != null;
+        for (User u : fetchedUser
+             ) {
+            if(Objects.equals(u.getName(), user.getName())){
+               isListed = true;
+            } else {
+                isListed = false;
+            }
+        }
+
+        if(!isListed){
+            try(Connection con = DbConnection.getConnection()){
+                String sql = "INSERT INTO user (id,name,total) VALUES (?,?,?);";
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+                preparedStatement.setInt(1, user.getId());
+                preparedStatement.setString(2,user.getName());
+                preparedStatement.setInt(3,user.getTotal());
+                preparedStatement.executeUpdate();
+
+                changeScene(event,"/MainWindow.fxml",null);
+            }  catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
+        }else {
+            updateData(event, user.getName(), user.getTotal());
+        }
+
+    }
+    public static void updateData(ActionEvent e,String name,int score) {
+        try(Connection con = DbConnection.getConnection()){
+            String sql = "UPDATE user SET total = ? where name = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+            preparedStatement.setInt(1, score);
+            preparedStatement.setString(2, name);
+            preparedStatement.executeUpdate();
+
+            changeScene(e,"/MainWindow.fxml",null);
+        }  catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 }
