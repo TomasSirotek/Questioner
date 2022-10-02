@@ -39,7 +39,7 @@ public class MainController implements Initializable {
                         "/Questionaire.fxml",full_name.getText()));
     }
 
-    public void fetchData() {
+    private void fetchData() {
         ObservableList<User> obsUsersList = FXCollections.observableArrayList();
         List<User> fetchedUsers = Utils.fetchData();
 
@@ -58,7 +58,5 @@ public class MainController implements Initializable {
            alert.setContentText("You are the first user ");
            alert.show();
         }
-
-
     }
 }

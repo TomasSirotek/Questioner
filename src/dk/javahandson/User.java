@@ -1,6 +1,5 @@
 package dk.javahandson;
 
-import java.util.List;
 
 public class User {
     private Integer id;
