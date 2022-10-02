@@ -2,16 +2,14 @@ package dk.javahandson;
 
 
 public class Question {
-   // private String question;
     private int id;
+    private String question;
     private String answer;
-    private String userName;
 
-    public Question(int id,String answer,String userName){
-        // this.question=question;
+    public Question(int id,String answer,String question){
         this.id= id;
+        this.question = question;
         this.answer=answer;
-        this.userName= userName;
     }
 
     public int getId() {
@@ -26,7 +24,11 @@ public class Question {
 
     public void setAnswer(String answer) { this.answer = answer; }
 
-    public String getUserName() { return userName; }
+    public String getQuestion() {
+        return question;
+    }
 
-    public void setUserName(String userName) { this.userName = userName; }
+    public void setQuestion(String question) {
+        this.question = question;
+    }
 }

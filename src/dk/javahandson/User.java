@@ -4,12 +4,9 @@ import java.util.List;
 
 public class User {
     private Integer id;
-
     private String name;
     private Integer total;
     private Double time;
-
-    private List<Question> resultList;
     private boolean isListed;
 
     public User(Integer id, String name,int total, double time, boolean isListed) {
@@ -27,11 +24,18 @@ public class User {
     public Integer getId(){
        return id;
     }
+    public void setId(Integer id){
+        this.id = id;
+    }
     public int getTotal(){
         return total;
     }
     public String getName(){
         return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
     public Double getTime(){
         return time;

@@ -10,10 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-    public TableColumn<User, String> id;
+    @FXML
+    private TableColumn<User, String> id;
     @FXML
     private TableColumn<User,String> name;
     @FXML
@@ -22,43 +24,41 @@ public class MainController implements Initializable {
     private TableColumn<User,Integer> total;
     @FXML
     private TableView<User> resultTable;
+
     @FXML
     private TextField full_name;
     @FXML
     private Button proceed;
 
-    private final ObservableList<User> usersList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        fetchData();
         proceed.setOnAction(event ->
                 Utils.changeScene(event,
-                        "/Questionaire.fxml",new User(1,full_name.getText(),0,0,false)));
+                        "/Questionaire.fxml",full_name.getText()));
     }
 
-   // public void setScore(Integer score){
-//        test.setText(String.valueOf(score));
-//    }
-   @FXML
-    public void getUser(User u) {
+    public void fetchData() {
+        ObservableList<User> obsUsersList = FXCollections.observableArrayList();
+        List<User> fetchedUsers = Utils.fetchData();
 
-        usersList.add(u);
-
-        id.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
-        name.setCellValueFactory(new PropertyValueFactory<User,String>("name"));
-        total.setCellValueFactory(new PropertyValueFactory<User,Integer>("total"));
-        time.setCellValueFactory(new PropertyValueFactory<User,Double>("time"));
-
-       for (User us: usersList
+        if(fetchedUsers != null){
+            for (User u : fetchedUsers
             ) {
-           if(u.getName() == us.getName()){
-               // add for another row
-               System.out.print("Exists");
-           }else {
-               // count score up
-               resultTable.setItems(usersList);
-           }
-       }
-    }
+                obsUsersList.add(u);
+                id.setCellValueFactory(new PropertyValueFactory<>("id"));
+                name.setCellValueFactory(new PropertyValueFactory<>("name"));
+                total.setCellValueFactory(new PropertyValueFactory<>("total"));
+                time.setCellValueFactory(new PropertyValueFactory<>("time"));
+            }
+            resultTable.setItems(obsUsersList);
+        }else {
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setContentText("You are the first user ");
+           alert.show();
+        }
 
+
+    }
 }

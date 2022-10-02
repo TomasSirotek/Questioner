@@ -56,7 +56,10 @@
                         <Button disable="true" mnemonicParsing="false" prefWidth="89.0" text="Graph.." />
                      </children>
                   </HBox>
-                  <HBox prefHeight="44.0" prefWidth="296.0" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="296.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#fetchData" prefWidth="85.0" text="Rerfresh.." />
+                     </children></HBox>
                   <HBox prefHeight="70.0" prefWidth="276.0" />
                </children>
                <padding>
