@@ -66,44 +66,43 @@ public class QuestController implements Initializable {
     }
     @FXML
     private void getScore(){
-        String[] resultGroup1 = first_question.getSelectedToggle().toString().split("'");
-        String[] resultGroup2 = second_question.getSelectedToggle().toString().split("'");
-        String[] resultGroup3 = third_question.getSelectedToggle().toString().split("'");
-        String[] resultGroup4 = forth_question.getSelectedToggle().toString().split("'");
-        String[] resultGroup5 = fifth_question.getSelectedToggle().toString().split("'");
-        String[] resultGroup6 = sixth_question.getSelectedToggle().toString().split("'");
-        String[] resultGroup7 = seventh_question.getSelectedToggle().toString().split("'");
+            String[] resultGroup1 = first_question.getSelectedToggle().toString().split("'");
+            String[] resultGroup2 = second_question.getSelectedToggle().toString().split("'");
+            String[] resultGroup3 = third_question.getSelectedToggle().toString().split("'");
+            String[] resultGroup4 = forth_question.getSelectedToggle().toString().split("'");
+            String[] resultGroup5 = fifth_question.getSelectedToggle().toString().split("'");
+            String[] resultGroup6 = sixth_question.getSelectedToggle().toString().split("'");
+            String[] resultGroup7 = seventh_question.getSelectedToggle().toString().split("'");
 
-        resultFromQuestions.add(resultGroup1[1]);
-        resultFromQuestions.add(resultGroup2[1]);
-        resultFromQuestions.add(resultGroup3[1]);
-        resultFromQuestions.add(resultGroup4[1]);
-        resultFromQuestions.add(resultGroup5[1]);
-        resultFromQuestions.add(resultGroup6[1]);
-        resultFromQuestions.add(resultGroup7[1]);
+            resultFromQuestions.add(resultGroup1[1]);
+            resultFromQuestions.add(resultGroup2[1]);
+            resultFromQuestions.add(resultGroup3[1]);
+            resultFromQuestions.add(resultGroup4[1]);
+            resultFromQuestions.add(resultGroup5[1]);
+            resultFromQuestions.add(resultGroup6[1]);
+            resultFromQuestions.add(resultGroup7[1]);
 
-        for (int i = 0; i < resultFromQuestions.size(); i++) {
-            switch (resultFromQuestions.get(i)) {
-                case "Disagree" -> {
-                    score -= 1;
-                    resultList.add(new Question(i + 1, "Disagree", full_name.getText()));
+                for (int i = 0; i < resultFromQuestions.size(); i++) {
+                    switch (resultFromQuestions.get(i)) {
+                        case "Disagree" -> {
+                            score -= 1;
+                            resultList.add(new Question(i + 1, "Disagree", full_name.getText()));
+                        }
+                        case "Neutral" -> {
+                            score += 0;
+                            resultList.add(new Question(i + 1, "Neutral", full_name.getText()));
+                        }
+                        case "Agree" -> {
+                            score += 1;
+                            resultList.add(new Question(i + 1, "Agree", full_name.getText()));
+                        }
+                        default -> {
+                        }
                 }
-                case "Neutral" -> {
-                    score += 0;
-                    resultList.add(new Question(i + 1, "Neutral", full_name.getText()));
-                }
-                case "Agree" -> {
-                    score += 1;
-                    resultList.add(new Question(i + 1, "Agree", full_name.getText()));
-                }
-                default -> {
-                }
+
+                // Auto-increment id in db table
+                user = new User(0, full_name.getText(), score);
+                score_final.setText(String.valueOf(score));
             }
-
         }
-        // Auto-increment in db table
-        user = new User(0, full_name.getText(), score,0,false);
-        score_final.setText(String.valueOf(score));
-    }
-
 }

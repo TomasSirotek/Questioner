@@ -5,19 +5,11 @@ public class User {
     private Integer id;
     private String name;
     private Integer total;
-    private Double time;
-    private boolean isListed;
 
-    public User(Integer id, String name,int total, double time, boolean isListed) {
+    public User(Integer id, String name,int total) {
         this.id = id;
         this.name = name;
         this.total = total;
-        this.time = time;
-        this.isListed = isListed;
-    }
-
-    public boolean isListed(){
-        return isListed;
     }
 
     public Integer getId(){
@@ -29,14 +21,13 @@ public class User {
     public int getTotal(){
         return total;
     }
+
+    public void setTotal(Integer total){ this.total = total;}
     public String getName(){
         return name;
     }
 
     public void setName(String name){
         this.name = name;
-    }
-    public Double getTime(){
-        return time;
     }
 }

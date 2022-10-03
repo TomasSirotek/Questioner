@@ -46,16 +46,14 @@ public class Utils {
     public static List<User> fetchData(){
         List<User> userList = new ArrayList<>();
         try (Connection con = DbConnection.getConnection();){
-            String sql = "SELECT * FROM user ";
+            String sql = "SELECT * FROM user ORDER BY total DESC";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int total = rs.getInt("total");
-                double time = rs.getDouble("time");
-                boolean isListed = rs.getBoolean("isListed");
-                User u = new User(id, name, total,time,isListed);
+                User u = new User(id, name, total);
                 userList.add(u);
             }
             return userList;
