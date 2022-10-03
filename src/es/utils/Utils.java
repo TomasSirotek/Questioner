@@ -1,5 +1,6 @@
 package es.utils;
 
+import dk.javahandson.Question;
 import dk.javahandson.User;
 import en.assignment.gui.QuestController;
 import javafx.event.ActionEvent;
@@ -45,7 +46,7 @@ public class Utils {
 
     public static List<User> fetchData(){
         List<User> userList = new ArrayList<>();
-        try (Connection con = DbConnection.getConnection();){
+        try (Connection con = DbConnection.getConnection()){
             String sql = "SELECT * FROM user ORDER BY total DESC";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -57,6 +58,28 @@ public class Utils {
                 userList.add(u);
             }
             return userList;
+        } catch (
+                SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        return null;
+    }
+
+    public static User fetchUserByName(String name){
+
+        try (Connection con = DbConnection.getConnection()){
+            String sql = "SELECT * FROM user as u WHERE u.name=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                int id = rs.getInt("id");
+                String fetchedName = rs.getString("name");
+                int total = rs.getInt("total");
+                return new User(id,fetchedName,total);
+            }
+
         } catch (
                 SQLException throwable) {
             throwable.printStackTrace();
@@ -88,6 +111,22 @@ public class Utils {
                 preparedStatement.setInt(3,user.getTotal());
                 preparedStatement.executeUpdate();
 
+                User createdUser = fetchUserByName(user.getName());
+
+                // add answer to user_answer table
+                if(!user.getQuestionList().isEmpty() || createdUser != null){
+                    for (Question q : user.getQuestionList()
+                         ) {
+                        String qSql = "INSERT INTO question (id,user_id,answer) VALUES (?,?,?);";
+                        PreparedStatement qPreparedStatement = con.prepareStatement(qSql);
+
+                        qPreparedStatement.setInt(1, 0);
+                        qPreparedStatement.setInt(2, createdUser.getId());
+                        qPreparedStatement.setString(3,q.getAnswer());
+                        qPreparedStatement.executeUpdate();
+                    }
+                }
+
                 changeScene(event,"/MainWindow.fxml",null);
             }  catch (SQLException throwable) {
                 throwable.printStackTrace();
@@ -112,4 +151,8 @@ public class Utils {
         }
     }
 
+    public static void fetchQuestionData(String name) {
+
+
+    }
 }

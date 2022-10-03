@@ -6,12 +6,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -36,12 +41,12 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         fetchData();
         handleClick();
-
         proceed.setOnAction(event ->
                 Utils.changeScene(event,
                         "/Questionaire.fxml",full_name.getText()));
     }
 
+    @FXML
     private void handleClick() {
         resultTable.setRowFactory(new Callback<TableView<User>, TableRow<User>>()
         {
@@ -49,6 +54,7 @@ public class MainController implements Initializable {
             public TableRow<User> call(TableView<User> param)
             {
                 TableRow<User> row = new TableRow<User>();
+
                 row.setOnMouseClicked(new EventHandler<MouseEvent>()
                 {
                     @Override
@@ -56,9 +62,22 @@ public class MainController implements Initializable {
                     {
                         if (event.getClickCount() == 2 && (! row.isEmpty()) )
                         {
+                            Parent root = null;
                             System.out.println(row.getIndex());
                             User serialData = row.getItem();
                             System.out.println(serialData.getName());
+                            try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AnswersStats.fxml"));
+                                root = loader.load();
+                                AnswersController ac = loader.getController();
+                                ac.setUser(serialData.getName());
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(root));
+                            stage.setResizable(false);
+                            stage.show();
                         }
                     }
                 });

@@ -5,7 +5,7 @@ public class Question {
     private String question;
     private String answer;
 
-    public Question(int id,String answer,String question){
+    public Question(int id,String question,String answer){
         this.id= id;
         this.question = question;
         this.answer=answer;

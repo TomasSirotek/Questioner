@@ -1,12 +1,16 @@
 package dk.javahandson;
 
 
+import java.util.List;
+
 public class User {
     private Integer id;
     private String name;
     private Integer total;
 
-    public User(Integer id, String name,int total) {
+    private List<Question> questionList;
+
+    public User(Integer id, String name, int total) {
         this.id = id;
         this.name = name;
         this.total = total;
@@ -29,5 +33,13 @@ public class User {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    public List<Question> getQuestionList() {
+        return questionList;
+    }
+
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
     }
 }

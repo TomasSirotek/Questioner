@@ -66,7 +66,7 @@
          <children>
             <VBox alignment="TOP_CENTER" layoutX="-1.0" layoutY="-2.0" prefHeight="398.0" prefWidth="296.0">
                <children>
-                  <TableView fx:id="resultTable" prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="resultTable" prefHeight="388.0" prefWidth="286.0">
                     <columns>
                       <TableColumn fx:id="id" prefWidth="93.0" text="id" />
                       <TableColumn fx:id="name" minWidth="0.0" prefWidth="99.0" text="name" />
