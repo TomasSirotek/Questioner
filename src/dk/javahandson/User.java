@@ -10,10 +10,11 @@ public class User {
 
     private List<Question> questionList;
 
-    public User(Integer id, String name, int total) {
+    public User(Integer id, String name, int total,List<Question> questions) {
         this.id = id;
         this.name = name;
         this.total = total;
+        this.questionList = questions;
     }
 
     public Integer getId(){

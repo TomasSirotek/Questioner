@@ -118,9 +118,7 @@ public class QuestController implements Initializable {
                 }
             }
         }
-            // Auto-increment id in db table
-            user = new User(0, full_name.getText(), score);
-            user.setQuestionList(resultList);
+            user = new User(0, full_name.getText(), score,resultList);
             score_final.setText(String.valueOf(score));
 
     }

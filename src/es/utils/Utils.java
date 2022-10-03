@@ -11,9 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Utils {
 
@@ -54,7 +52,7 @@ public class Utils {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int total = rs.getInt("total");
-                User u = new User(id, name, total);
+                User u = new User(id, name, total,null);
                 userList.add(u);
             }
             return userList;
@@ -65,22 +63,29 @@ public class Utils {
         return null;
     }
 
-    public static User fetchUserByName(String name){
+
+    public static User fetchUserByName(String name) {
 
         try (Connection con = DbConnection.getConnection()){
-            String sql = "SELECT * FROM user as u WHERE u.name=?";
+            String sql = "SELECT * FROM user u JOIN question q ON q.user_id = u.id WHERE u.name = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
+            List<Question> questions = new ArrayList<>();
+            User u = null;
 
-            if(rs.next()){
+            while (rs.next()){
+
                 int id = rs.getInt("id");
                 String fetchedName = rs.getString("name");
                 int total = rs.getInt("total");
-
-                return new User(id,fetchedName,total);
+                int qId = rs.getInt("id");
+                int userId = rs.getInt("user_id");
+                String answer = rs.getString("answer");
+                questions.add(new Question(qId,"Question",answer));
+                u = new User(id,fetchedName,total,questions);
             }
-
+            return u;
         } catch (
                 SQLException throwable) {
             throwable.printStackTrace();
@@ -114,13 +119,14 @@ public class Utils {
 
                 User createdUser = fetchUserByName(user.getName());
 
-                if(!user.getQuestionList().isEmpty() || createdUser != null){
+                if(!user.getQuestionList().isEmpty()){
                     for (Question q : user.getQuestionList()
                          ) {
                         String qSql = "INSERT INTO question (id,user_id,question,answer) VALUES (?,?,?,?);";
                         PreparedStatement qPreparedStatement = con.prepareStatement(qSql);
 
                         qPreparedStatement.setInt(1, q.getId() + 1);
+                        assert createdUser != null;
                         qPreparedStatement.setInt(2, createdUser.getId());
                         qPreparedStatement.setString(3,q.getQuestion());
                         qPreparedStatement.setString(4,q.getAnswer());

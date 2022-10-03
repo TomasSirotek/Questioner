@@ -1,9 +1,8 @@
 package en.assignment.gui;
 
+import dk.javahandson.Question;
 import dk.javahandson.User;
 import es.utils.Utils;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -13,8 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -38,12 +37,11 @@ public class AnswersController implements Initializable {
     }
 
     private void prepareData() {
-        String[] strArray = {"Delhi", "Mumbai", "Kolkata", "Chennai", "Delhi", "Nether", "Bitcoin"};
-        List<String> arrayList = new ArrayList<>(Arrays.asList(strArray));
-
         User fetchedUser = Utils.fetchUserByName(full_name.getText());
 
         if (fetchedUser != null) {
+            List<Question> arrayList = fetchedUser.getQuestionList();
+            score_final.setText(String.valueOf((fetchedUser.getTotal())));
             // display answers in labels
             int position = 0;
             for (int i = 9; i < 16; i++) {
@@ -53,11 +51,10 @@ public class AnswersController implements Initializable {
                         if (nodeIn instanceof VBox) {
                             for (Node label : ((VBox) nodeIn).getChildren()) {
                                 if (label instanceof Label) {
-                                    ((Label) label).setText(arrayList.get(position));
+                                    ((Label) label).setText(arrayList.get(position).getAnswer());
                                     position++;
                                 }
                             }
-
                         }
                     }
                 }
