@@ -77,6 +77,7 @@ public class Utils {
                 int id = rs.getInt("id");
                 String fetchedName = rs.getString("name");
                 int total = rs.getInt("total");
+
                 return new User(id,fetchedName,total);
             }
 
@@ -113,16 +114,16 @@ public class Utils {
 
                 User createdUser = fetchUserByName(user.getName());
 
-                // add answer to user_answer table
                 if(!user.getQuestionList().isEmpty() || createdUser != null){
                     for (Question q : user.getQuestionList()
                          ) {
-                        String qSql = "INSERT INTO question (id,user_id,answer) VALUES (?,?,?);";
+                        String qSql = "INSERT INTO question (id,user_id,question,answer) VALUES (?,?,?,?);";
                         PreparedStatement qPreparedStatement = con.prepareStatement(qSql);
 
-                        qPreparedStatement.setInt(1, 0);
+                        qPreparedStatement.setInt(1, q.getId() + 1);
                         qPreparedStatement.setInt(2, createdUser.getId());
-                        qPreparedStatement.setString(3,q.getAnswer());
+                        qPreparedStatement.setString(3,q.getQuestion());
+                        qPreparedStatement.setString(4,q.getAnswer());
                         qPreparedStatement.executeUpdate();
                     }
                 }

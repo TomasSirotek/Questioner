@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="en.assignment.gui.AnswersController">
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="en.assignment.gui.AnswersController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -131,13 +131,8 @@
             </Label>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <VBox prefHeight="50.0" prefWidth="102.0">
-               <children>
-                  <Label prefHeight="58.0" prefWidth="121.0" text="User answered :" />
-               </children>
-            </VBox>
             <VBox prefHeight="50.0" prefWidth="102.0">
                <children>
                   <Label fx:id="answer1" prefHeight="59.0" prefWidth="147.0" text="Agree">
@@ -149,64 +144,76 @@
             </VBox>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <VBox prefHeight="50.0" prefWidth="102.0">
+            <VBox fx:id="answer2" prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <Label prefHeight="58.0" prefWidth="121.0" text="User answered :" />
-               </children>
-            </VBox>
-            <VBox fx:id="answer2" prefHeight="50.0" prefWidth="102.0" />
+                  <Label fx:id="answer11" prefHeight="59.0" prefWidth="147.0" text="Neutral">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <VBox prefHeight="50.0" prefWidth="102.0">
+            <VBox fx:id="answer3" prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <Label prefHeight="58.0" prefWidth="121.0" text="User answered :" />
-               </children>
-            </VBox>
-            <VBox fx:id="answer3" prefHeight="50.0" prefWidth="102.0" />
+                  <Label fx:id="answer12" prefHeight="59.0" prefWidth="147.0" text="Disagree">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
-            <VBox prefHeight="50.0" prefWidth="102.0">
+            <VBox fx:id="answer4" prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <Label prefHeight="58.0" prefWidth="121.0" text="User answered :" />
-               </children>
-            </VBox>
-            <VBox fx:id="answer4" prefHeight="50.0" prefWidth="102.0" />
+                  <Label fx:id="answer13" prefHeight="59.0" prefWidth="147.0" text="Agree">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <VBox prefHeight="50.0" prefWidth="102.0">
+            <VBox fx:id="answer5" prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <Label prefHeight="58.0" prefWidth="121.0" text="User answered :" />
-               </children>
-            </VBox>
-            <VBox fx:id="answer5" prefHeight="50.0" prefWidth="102.0" />
+                  <Label fx:id="answer14" prefHeight="59.0" prefWidth="147.0" text="Agree">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <children>
-            <VBox prefHeight="50.0" prefWidth="102.0">
+            <VBox fx:id="answer6" prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <Label prefHeight="58.0" prefWidth="121.0" text="User answered :" />
-               </children>
-            </VBox>
-            <VBox fx:id="answer6" prefHeight="50.0" prefWidth="102.0" />
+                  <Label fx:id="answer15" prefHeight="59.0" prefWidth="147.0" text="Agree">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <children>
-            <VBox prefHeight="50.0" prefWidth="102.0">
+            <VBox fx:id="answer7" prefHeight="50.0" prefWidth="102.0">
                <children>
-                  <Label prefHeight="58.0" prefWidth="121.0" text="User answered :" />
-               </children>
-            </VBox>
-            <VBox fx:id="answer7" prefHeight="50.0" prefWidth="102.0" />
+                  <Label fx:id="answer16" prefHeight="59.0" prefWidth="147.0" text="Agree">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="8">
