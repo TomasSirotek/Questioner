@@ -75,7 +75,6 @@ public class Utils {
             User u = null;
 
             while (rs.next()){
-
                 int id = rs.getInt("id");
                 String fetchedName = rs.getString("name");
                 int total = rs.getInt("total");
@@ -84,6 +83,29 @@ public class Utils {
                 String answer = rs.getString("answer");
                 questions.add(new Question(qId,"Question",answer));
                 u = new User(id,fetchedName,total,questions);
+            }
+            return u;
+        } catch (
+                SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        return null;
+    }
+
+    public static User fetchSingleByName(String name) {
+
+        try (Connection con = DbConnection.getConnection()){
+            String sql = "SELECT * FROM user u WHERE u.name = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            User u = null;
+
+            while (rs.next()){
+                int id = rs.getInt("id");
+                String fetchedName = rs.getString("name");
+                int total = rs.getInt("total");
+                u = new User(id,fetchedName,total,null);
             }
             return u;
         } catch (
@@ -117,9 +139,9 @@ public class Utils {
                 preparedStatement.setInt(3,user.getTotal());
                 preparedStatement.executeUpdate();
 
-                User createdUser = fetchUserByName(user.getName());
+                User createdUser = fetchSingleByName(user.getName());
 
-                if(!user.getQuestionList().isEmpty()){
+                if(!user.getQuestionList().isEmpty() ){
                     for (Question q : user.getQuestionList()
                          ) {
                         String qSql = "INSERT INTO question (id,user_id,question,answer) VALUES (?,?,?,?);";
