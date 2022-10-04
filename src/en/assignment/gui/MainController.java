@@ -67,6 +67,16 @@ public class MainController implements Initializable {
         stage.show();
     }
 
+    private boolean checkUserInput() {
+        if (full_name.getText() == "") {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please fill the name");
+            alert.show();
+            return false;
+        } else {
+            return true;
+        }
+    }
     @FXML
     private void handleClick() {
         resultTable.setRowFactory(new Callback<TableView<User>, TableRow<User>>()

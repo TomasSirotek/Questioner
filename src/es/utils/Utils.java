@@ -63,6 +63,28 @@ public class Utils {
         return null;
     }
 
+    public static List<User> fetchGraphData(){
+        List<User> userList = new ArrayList<>();
+        try (Connection con = DbConnection.getConnection()){
+            String sql = "SELECT * FROM user ORDER BY total DESC";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int total = rs.getInt("total");
+                User u = new User(id, name, total,null);
+                userList.add(u);
+            }
+            return userList;
+        } catch (
+                SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        return null;
+    }
+
+
 
     public static User fetchUserByName(String name) {
 
@@ -133,12 +155,11 @@ public class Utils {
 
         if(!isListed){
             try(Connection con = DbConnection.getConnection()){
-                String sql = "INSERT INTO user (id,name,total) VALUES (?,?,?);";
+                String sql = "INSERT INTO user (name,total) VALUES (?,?);";
                 PreparedStatement preparedStatement = con.prepareStatement(sql);
-
-                preparedStatement.setInt(1, user.getId());
-                preparedStatement.setString(2,user.getName());
-                preparedStatement.setInt(3,user.getTotal());
+                
+                preparedStatement.setString(1,user.getName());
+                preparedStatement.setInt(2,user.getTotal());
                 preparedStatement.executeUpdate();
 
                 User createdUser = fetchSingleByName(user.getName());
@@ -149,9 +170,9 @@ public class Utils {
                         String qSql = "INSERT INTO question (user_id,question,answer) VALUES (?,?,?);";
                         PreparedStatement qPreparedStatement = con.prepareStatement(qSql);
                         assert createdUser != null;
-                        qPreparedStatement.setInt(2, createdUser.getId());
-                        qPreparedStatement.setString(3,q.getQuestion());
-                        qPreparedStatement.setString(4,q.getAnswer());
+                        qPreparedStatement.setInt(1, createdUser.getId());
+                        qPreparedStatement.setString(2,q.getQuestion());
+                        qPreparedStatement.setString(3,q.getAnswer());
                         qPreparedStatement.executeUpdate();
                     }
                 }

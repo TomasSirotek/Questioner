@@ -32,6 +32,9 @@ public class GraphController implements Initializable {
     public void setData() {
 //        x.setLabel("Questions");
 //        y.setLabel("Avg");
+
+        // avarage answer to that question
+        // I love working with java =
         graph.setTitle("Graph stats");
 
         String[] hardCodedQuestion = { "I love working with Java","Test question 1","Test question 2","Test question 3"};
