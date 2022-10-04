@@ -53,7 +53,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="296.0">
                      <children>
-                        <Button disable="true" mnemonicParsing="false" prefWidth="89.0" text="Graph.." />
+                        <Button fx:id="displayGraph" mnemonicParsing="false" prefWidth="89.0" text="Graph.." />
                      </children>
                   </HBox>
                </children>

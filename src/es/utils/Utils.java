@@ -78,10 +78,12 @@ public class Utils {
                 int id = rs.getInt("id");
                 String fetchedName = rs.getString("name");
                 int total = rs.getInt("total");
+
                 int qId = rs.getInt("id");
                 int userId = rs.getInt("user_id");
                 String answer = rs.getString("answer");
-                questions.add(new Question(qId,"Question",answer));
+                String question = rs.getString("question");
+                questions.add(new Question(qId,question,answer));
                 u = new User(id,fetchedName,total,questions);
             }
             return u;

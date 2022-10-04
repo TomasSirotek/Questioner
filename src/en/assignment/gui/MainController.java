@@ -4,6 +4,7 @@ import dk.javahandson.User;
 import es.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+    @FXML
+    private Button displayGraph;
     @FXML
     private TableColumn<User, String> id;
     @FXML
@@ -44,6 +47,27 @@ public class MainController implements Initializable {
         proceed.setOnAction(event ->
                 Utils.changeScene(event,
                         "/Questionaire.fxml",full_name.getText()));
+
+        displayGraph.setOnAction(this::loadGraphScene);
+    }
+
+    private void loadGraphScene(ActionEvent event) {
+
+
+
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GraphStats.fxml"));
+            root = loader.load();
+            GraphController ac = loader.getController();
+            ac.setData();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
     }
 
     @FXML

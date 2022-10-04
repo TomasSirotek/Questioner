@@ -12,8 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -42,7 +40,7 @@ public class AnswersController implements Initializable {
         if (fetchedUser != null) {
             List<Question> arrayList = fetchedUser.getQuestionList();
             score_final.setText(String.valueOf((fetchedUser.getTotal())));
-            // display answers in labels
+            // display answers in labels for each node starting from 9
             int position = 0;
             for (int i = 9; i < 16; i++) {
                 Node nodeOut = gridPane.getChildren().get(i);
