@@ -1,5 +1,8 @@
 package en.assignment.gui;
 
+import dk.javahandson.Question;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.CategoryAxis;
@@ -8,6 +11,9 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GraphController implements Initializable {
@@ -16,35 +22,40 @@ public class GraphController implements Initializable {
     @FXML
     private CategoryAxis x;
     @FXML
-    private LineChart graph;
+    private LineChart<String,Integer> graph;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-            // fetch data into the graph
         setData();
     }
 
-
     public void setData() {
-        //x axis representation
-        x.setLabel("Questions");
-        //y axis representation
-        y.setLabel("Avg");
+//        x.setLabel("Questions");
+//        y.setLabel("Avg");
         graph.setTitle("Graph stats");
 
-        XYChart.Series series = new XYChart.Series();
-        series.setName("No of schools in an year");
+        String[] hardCodedQuestion = { "I love working with Java","Test question 1","Test question 2","Test question 3"};
+        List<String> wordList = Arrays.asList(hardCodedQuestion);
+        int[] avgPoint = {1,2,3,4,5,6};
 
-        series.getData().add(new XYChart.Data(1970, 15));
-        series.getData().add(new XYChart.Data(1980, 30));
-        series.getData().add(new XYChart.Data(1990, 60));
-        series.getData().add(new XYChart.Data(2000, 120));
-        series.getData().add(new XYChart.Data(2013, 240));
-        series.getData().add(new XYChart.Data(2014, 300));
+        ObservableList<XYChart.Series<String,Integer>> sl = FXCollections.observableArrayList();
+        XYChart.Series<String, Integer> sr = new XYChart.Series<>();
 
-        //Setting the data to Line chart
-        graph.getData().add(series);
+        for (int i = 0; i < wordList.size(); i++) {
+            sr.getData().add((new XYChart.Data<>( wordList.get(i), i)));
+        }
+        
 
+        // Create dataset for  males and add it to the series
+//        ObservableList<XYChart.Data<String,Integer>> l1 = FXCollections.observableArrayList(
+//                new XYChart.Data<>("Question1",0),
+//                new XYChart.Data<>("Question2",20),
+//                new XYChart.Data<>("Question3",50),
+//                new XYChart.Data<>("Question4",60)
+//                );
+//
+//        sl.add(new XYChart.Series<>("Question", l1));
 
+        graph.getData().add(sr);
     }
 }

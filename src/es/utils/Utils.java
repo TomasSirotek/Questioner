@@ -146,10 +146,8 @@ public class Utils {
                 if(!user.getQuestionList().isEmpty() ){
                     for (Question q : user.getQuestionList()
                          ) {
-                        String qSql = "INSERT INTO question (id,user_id,question,answer) VALUES (?,?,?,?);";
+                        String qSql = "INSERT INTO question (user_id,question,answer) VALUES (?,?,?);";
                         PreparedStatement qPreparedStatement = con.prepareStatement(qSql);
-
-                        qPreparedStatement.setInt(1, q.getId() + 1);
                         assert createdUser != null;
                         qPreparedStatement.setInt(2, createdUser.getId());
                         qPreparedStatement.setString(3,q.getQuestion());

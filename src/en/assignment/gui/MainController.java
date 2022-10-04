@@ -52,9 +52,6 @@ public class MainController implements Initializable {
     }
 
     private void loadGraphScene(ActionEvent event) {
-
-
-
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GraphStats.fxml"));
