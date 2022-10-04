@@ -32,17 +32,13 @@ public class QuestController implements Initializable {
     @FXML
     private Button calculate;
     @FXML
-    private Label score_final;
-    @FXML
-    private Label full_name;
-
+    private Label score_final,
+                  full_name;
     private int score = 0;
 
     private final List<String> resultFromQuestions = new ArrayList<>();
     private final List<Question> resultList = new ArrayList<>();
-
     private User user;
-    // agree = +1, neutral = 0, disagree= -1.
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

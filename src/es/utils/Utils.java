@@ -27,7 +27,6 @@ public class Utils {
             }catch(IOException e){
                 e.printStackTrace();
             }
-
         } else {
             try{
                 root = FXMLLoader.load(Objects.requireNonNull(Utils.class.getResource(fxmlFile)));
@@ -63,20 +62,29 @@ public class Utils {
         return null;
     }
 
-    public static List<User> fetchGraphData(){
-        List<User> userList = new ArrayList<>();
+    public static Map<String,Double> fetchGraphData(String question){
+        double avgResult = 0.0;
+        String questionResult = "";
+        Map<String,Double> myMap = new HashMap<String, Double>();
+
         try (Connection con = DbConnection.getConnection()){
-            String sql = "SELECT * FROM user ORDER BY total DESC";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            String sql = "SELECT question AS quest, avg(case answer " +
+                    "when 'Disagree' then -1 " +
+                    "when 'Neutral' then 0 " +
+                    "when 'Agree' then 1 end) AS avg_score " +
+                    "FROM question " +
+                    "WHERE question = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, question);
+            ResultSet rs = ps.executeQuery();
+
             while(rs.next()){
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                int total = rs.getInt("total");
-                User u = new User(id, name, total,null);
-                userList.add(u);
+                questionResult = rs.getString("quest");
+                avgResult = rs.getDouble("avg_score");
+                myMap.put(questionResult,avgResult);
             }
-            return userList;
+            return myMap;
         } catch (
                 SQLException throwable) {
             throwable.printStackTrace();
@@ -84,10 +92,7 @@ public class Utils {
         return null;
     }
 
-
-
     public static User fetchUserByName(String name) {
-
         try (Connection con = DbConnection.getConnection()){
             String sql = "SELECT * FROM user u JOIN question q ON q.user_id = u.id WHERE u.name = ?";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -117,7 +122,6 @@ public class Utils {
     }
 
     public static User fetchSingleByName(String name) {
-
         try (Connection con = DbConnection.getConnection()){
             String sql = "SELECT * FROM user u WHERE u.name = ? ";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -157,7 +161,7 @@ public class Utils {
             try(Connection con = DbConnection.getConnection()){
                 String sql = "INSERT INTO user (name,total) VALUES (?,?);";
                 PreparedStatement preparedStatement = con.prepareStatement(sql);
-                
+
                 preparedStatement.setString(1,user.getName());
                 preparedStatement.setInt(2,user.getTotal());
                 preparedStatement.executeUpdate();
@@ -199,10 +203,5 @@ public class Utils {
         }  catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    }
-
-    public static void fetchQuestionData(String name) {
-
-
     }
 }

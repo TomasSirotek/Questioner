@@ -1,28 +1,16 @@
 package en.assignment.gui;
 
-import dk.javahandson.Question;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import es.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class GraphController implements Initializable {
     @FXML
-    private NumberAxis y;
-    @FXML
-    private CategoryAxis x;
-    @FXML
-    private LineChart<String,Integer> graph;
+    private LineChart<String,Double> graph;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -30,35 +18,25 @@ public class GraphController implements Initializable {
     }
 
     public void setData() {
-//        x.setLabel("Questions");
-//        y.setLabel("Avg");
-
-        // avarage answer to that question
-        // I love working with java =
         graph.setTitle("Graph stats");
-
-        String[] hardCodedQuestion = { "I love working with Java","Test question 1","Test question 2","Test question 3"};
+        String[] hardCodedQuestion = { "I like to work with Java","I think Java is fun","Java is my preffered language","My assignment are fun","My assignment are to easy","I always do my assignments","I always attend my class"};
         List<String> wordList = Arrays.asList(hardCodedQuestion);
-        int[] avgPoint = {1,2,3,4,5,6};
-
-        ObservableList<XYChart.Series<String,Integer>> sl = FXCollections.observableArrayList();
-        XYChart.Series<String, Integer> sr = new XYChart.Series<>();
+        List<Map<String,Double>> resultMap = new ArrayList<>();
+        XYChart.Series<String,Double> series = new XYChart.Series<>();
 
         for (int i = 0; i < wordList.size(); i++) {
-            sr.getData().add((new XYChart.Data<>( wordList.get(i), i)));
+            Map<String,Double> avg = Utils.fetchGraphData(wordList.get(i));
+            resultMap.add(avg);
         }
-        
 
-        // Create dataset for  males and add it to the series
-//        ObservableList<XYChart.Data<String,Integer>> l1 = FXCollections.observableArrayList(
-//                new XYChart.Data<>("Question1",0),
-//                new XYChart.Data<>("Question2",20),
-//                new XYChart.Data<>("Question3",50),
-//                new XYChart.Data<>("Question4",60)
-//                );
-//
-//        sl.add(new XYChart.Series<>("Question", l1));
-
-        graph.getData().add(sr);
+        for (Map<String, Double> map : resultMap) {
+            for (Map.Entry<String, Double> entry : map.entrySet()) {
+                String key = entry.getKey();
+                Double value = entry.getValue();
+                series.getData().add(new XYChart.Data<>(key, value));
+            }
+        }
+        series.setName("Average answers");
+        graph.getData().add(series);
     }
 }
